@@ -6,92 +6,115 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout android:layout_height="350dp"
-            android:layout_width="match_parent"
-            android:orientation="vertical">
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="100dp"
-                android:layout_weight="1"
-                android:rotationX="2"
-                android:text="@string/button1"
-                android:backgroundTint="@color/gray"/>
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="100dp"
-                android:layout_weight="1"
-                android:rotationX="2"
-                android:text="@string/button2"
-                android:backgroundTint="@color/gray"/>
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="100dp"
-                android:layout_weight="1"
-                android:rotationX="2"
-                android:text="@string/button3"
-                android:backgroundTint="@color/gray"/>
-        </LinearLayout>
-
-        <LinearLayout
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="@color/gray">
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="@string/title"
+            android:textSize="24sp"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="80dp"
+            android:fillViewport="true">
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:layout_marginStart="50dp"
-                android:layout_weight="1"
-                android:rotationX="2"
-                android:text="button"
-                android:backgroundTint="@color/gray"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:rotationX="2"
-                android:text="button"
-                android:backgroundTint="@color/gray"/>
+                <!-- 第一个 Button -->
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/gray"
+                    android:text="@string/button1" />
 
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="50dp"
-                android:layout_weight="1"
-                android:rotationX="2"
-                android:text="button"
-                android:backgroundTint="@color/gray"/>
-        </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/gray"
+                    android:text="@string/button2" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="50dp"
+                    android:backgroundTint="@color/gray"
+                    android:layout_marginEnd="50dp"
+                    android:text="@string/button3" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/gray"
+                    android:text="@string/button4" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/gray"
+                    android:text="@string/button5" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/gray"
+                    android:text="@string/button6" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/gray"
+                    android:text="@string/button7" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/gray"
+                    android:text="@string/button8" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/gray"
+                    android:text="@string/button9" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/gray"
+                    android:text="@string/button10" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
