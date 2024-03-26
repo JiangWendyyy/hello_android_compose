@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,7 +23,8 @@
                 android:layout_marginRight="100dp"
                 android:layout_weight="1"
                 android:rotationX="2"
-                android:text="@string/button1" />
+                android:text="@string/button1"
+                android:backgroundTint="@color/gray"/>
 
             <Button
                 android:id="@+id/button2"
@@ -35,7 +35,8 @@
                 android:layout_marginRight="100dp"
                 android:layout_weight="1"
                 android:rotationX="2"
-                android:text="@string/button2" />
+                android:text="@string/button2"
+                android:backgroundTint="@color/gray"/>
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
@@ -45,7 +46,8 @@
                 android:layout_marginRight="100dp"
                 android:layout_weight="1"
                 android:rotationX="2"
-                android:text="@string/button3" />
+                android:text="@string/button3"
+                android:backgroundTint="@color/gray"/>
         </LinearLayout>
 
         <LinearLayout
@@ -53,7 +55,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="bottom"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/gray">
 
             <Button
                 android:id="@+id/button4"
@@ -62,7 +65,8 @@
                 android:layout_marginStart="50dp"
                 android:layout_weight="1"
                 android:rotationX="2"
-                android:text="button"/>
+                android:text="button"
+                android:backgroundTint="@color/gray"/>
 
             <Button
                 android:id="@+id/button5"
@@ -73,7 +77,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:rotationX="2"
-                android:text="button"/>
+                android:text="button"
+                android:backgroundTint="@color/gray"/>
 
             <Button
                 android:id="@+id/button6"
@@ -83,7 +88,8 @@
                 android:layout_marginEnd="50dp"
                 android:layout_weight="1"
                 android:rotationX="2"
-                android:text="button"/>
+                android:text="button"
+                android:backgroundTint="@color/gray"/>
         </LinearLayout>
 
     </LinearLayout>
