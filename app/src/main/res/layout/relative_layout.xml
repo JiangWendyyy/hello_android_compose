@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:background="#673AB7"
+        android:text="@string/related_title"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/RelativeLayout2"
+        android:layout_height="500dp"
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:text="@string/related_title" />
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="100dp"
+            android:text="@string/related_title" />
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true">
+            <!-- 这个是在容器中央的 -->
+            <Button
+                android:id="@+id/img1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:text="@string/center" />
+            <!-- 在中间图片的左边 -->
+            <Button
+                android:id="@+id/img2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/img1"
+                android:src="@string/left" />
+
+            <!-- 在中间图片的右边 -->
+            <Button
+                android:id="@+id/img3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/img1"
+                android:src="@string/right" />
+
+            <!-- 在中间图片的上面-->
+            <Button
+                android:id="@+id/img4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_above="@id/img1"
+                android:layout_centerHorizontal="true"
+                android:src="@string/up" />
+
+            <!-- 在中间图片的下面 -->
+            <Button
+                android:id="@+id/img5"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/img1"
+                android:layout_centerHorizontal="true"
+                android:text="@string/down" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="100dp"
+                android:layout_alignParentBottom="true"
+                android:text="@string/related_title" />
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:text="@string/related_title" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

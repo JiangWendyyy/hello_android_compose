@@ -4,15 +4,19 @@
     <string name="button2">Button2</string>
     <string name="button1">Button1</string>
     <string name="button4">Button4</string>
-    <string name="button5">Button5</string>
+    <string name="button5">relative_layout</string>
     <string name="button6">Button6</string>
     <string name="button7">Button7</string>
     <string name="button8">Button8</string>
     <string name="button9">Button9</string>
     <string name="button10">Button10</string>
     <string name="title">Android practice</string>
-
-
+    <string name="center">中间</string>
+    <string name="up">上</string>
+    <string name="down">下</string>
+    <string name="left">左</string>
+    <string name="right">右</string>
+    <string name="related_title">相对布局</string>
 
 
 </resources>

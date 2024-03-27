@@ -12,4 +12,10 @@
     <string name="button9">按钮9</string>
     <string name="button10">按钮10</string>
     <string name="title">Android 练习</string>
+    <string name="center">中间</string>
+    <string name="up">上</string>
+    <string name="down">下</string>
+    <string name="left">左</string>
+    <string name="right">右</string>
+    <string name="related_title">相对布局</string>
 </resources>
