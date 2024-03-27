@@ -1,11 +1,12 @@
 package com.thoughtworks.androidtrain
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,5 +18,15 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val button5: Button = findViewById(R.id.navigateToRelatedActivity)
+        button5.setOnClickListener {
+            navigateToRelatedActivity()
+        }
+    }
+
+    private fun navigateToRelatedActivity() {
+        val intent = Intent(this, RelativeActivity::class.java)
+        startActivity(intent)
     }
 }

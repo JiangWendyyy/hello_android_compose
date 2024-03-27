@@ -7,10 +7,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
         android:background="#673AB7"
         android:text="@string/related_title"
-        android:textSize="14sp" />
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:gravity="center_vertical"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,13 +25,13 @@
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_alignParentTop="true"
-            android:text="@string/related_title" />
+            android:text="@string/Engineer" />
         <Button
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="100dp"
-            android:text="@string/related_title" />
+            android:layout_marginStart="110dp"
+            android:text="@string/Engineer_Encourage" />
 
         <RelativeLayout
             android:id="@+id/RelativeLayout3"
@@ -50,7 +52,7 @@
                 android:layout_height="80dp"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@id/img1"
-                android:src="@string/left" />
+                android:text="@string/left" />
 
             <!-- 在中间图片的右边 -->
             <Button
@@ -59,7 +61,7 @@
                 android:layout_height="80dp"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/img1"
-                android:src="@string/right" />
+                android:text="@string/right" />
 
             <!-- 在中间图片的上面-->
             <Button
@@ -68,7 +70,7 @@
                 android:layout_height="80dp"
                 android:layout_above="@id/img1"
                 android:layout_centerHorizontal="true"
-                android:src="@string/up" />
+                android:text="@string/up" />
 
             <!-- 在中间图片的下面 -->
             <Button
@@ -84,16 +86,16 @@
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="100dp"
+                android:layout_marginEnd="110dp"
                 android:layout_alignParentBottom="true"
-                android:text="@string/related_title" />
+                android:text="@string/UI_designer" />
             <Button
                 android:layout_width="100dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:text="@string/related_title" />
+                android:text="@string/Engineer" />
         </RelativeLayout>
     </RelativeLayout>
 

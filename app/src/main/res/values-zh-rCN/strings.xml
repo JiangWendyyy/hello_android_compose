@@ -5,7 +5,7 @@
     <string name="button2">按钮2</string>
     <string name="button1">按钮1</string>
     <string name="button4">按钮4</string>
-    <string name="button5">按钮5</string>
+    <string name="button5">跳转到相对布局</string>
     <string name="button6">按钮6</string>
     <string name="button7">按钮7</string>
     <string name="button8">按钮8</string>
@@ -18,4 +18,7 @@
     <string name="left">左</string>
     <string name="right">右</string>
     <string name="related_title">相对布局</string>
+    <string name="Engineer">程序员</string>
+    <string name="Engineer_Encourage">程序员鼓励语</string>
+    <string name="UI_designer">UI设计师</string>
 </resources>
