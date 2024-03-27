@@ -2,7 +2,7 @@
     <string name="app_name">My first Application</string>
     <string name="button3">Button3</string>
     <string name="button2">Button2</string>
-    <string name="button1">Button1</string>
+    <string name="button1">constraint_layout</string>
     <string name="button4">Button4</string>
     <string name="button5">Button5</string>
     <string name="button6">Button6</string>
@@ -11,8 +11,7 @@
     <string name="button9">Button9</string>
     <string name="button10">Button10</string>
     <string name="title">Android practice</string>
-
-
+    <string name="hello">Hello!</string>
 
 
 </resources>
