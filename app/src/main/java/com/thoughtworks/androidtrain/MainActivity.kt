@@ -23,6 +23,15 @@ class MainActivity : AppCompatActivity() {
         button1.setOnClickListener{
             navigateToConstraintActivity()
         }
+        var button2 = findViewById<Button>(R.id.toLoginActivity)
+        button2.setOnClickListener{
+            navigateToLoginActivity()
+        }
+    }
+
+    private fun navigateToLoginActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     private fun navigateToConstraintActivity() {

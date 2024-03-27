@@ -15,4 +15,10 @@
     <string name="hello">你好</string>
     <string name="Signup">注册</string>
     <string name="login">登陆</string>
+    <string name="remember_me">记住我</string>
+    <string name="forgot_password">忘记密码？</string>
+    <string name="or_connect_with">联系</string>
+    <string name="sign_up_with_e_mail">Email注册</string>
+    <string name="password">密码</string>
+    <string name="username">账号</string>
 </resources>

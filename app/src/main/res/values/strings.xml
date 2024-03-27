@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">My first Application</string>
     <string name="button3">Button3</string>
-    <string name="button2">Button2</string>
+    <string name="button2">login</string>
     <string name="button1">constraint_layout</string>
     <string name="button4">Button4</string>
     <string name="button5">Button5</string>
@@ -14,6 +14,12 @@
     <string name="hello">Hello!</string>
     <string name="Signup">Signup</string>
     <string name="login">login</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="or_connect_with">or connect with</string>
+    <string name="sign_up_with_e_mail">Sign up with E-mail</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
 
 
 </resources>
