@@ -12,4 +12,7 @@
     <string name="button9">按钮9</string>
     <string name="button10">按钮10</string>
     <string name="title">Android 练习</string>
+    <string name="hello">你好</string>
+    <string name="Signup">注册</string>
+    <string name="login">登陆</string>
 </resources>
