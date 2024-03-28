@@ -1,15 +1,25 @@
 package com.thoughtworks.androidtrain
 
+import android.app.Activity
 import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.view.KeyEvent
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        internal const val PICK_CONTACT_REQUEST = 0
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,22 +30,49 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         var button1 = findViewById<Button>(R.id.toConstraintActivity)
-        button1.setOnClickListener{
-            navigateToConstraintActivity()
+        button1.setOnClickListener {
+            navigateToActivity(ContactActivity::class.java)
         }
         var button2 = findViewById<Button>(R.id.toLoginActivity)
-        button2.setOnClickListener{
-            navigateToLoginActivity()
+        button2.setOnClickListener {
+            navigateToActivity(LoginActivity::class.java)
+        }
+        var button3 = findViewById<Button>(R.id.toContactActivity)
+        button3.setOnClickListener {
+            navigateToActivity(ContactActivity::class.java)
+        }
+
+
+    }
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
+            // When the user center presses, let them pick a contact.
+            startActivityForResult(
+                Intent(Intent.ACTION_PICK, Uri.parse("content://contacts")),
+                PICK_CONTACT_REQUEST
+            )
+            return true
+        }
+        return false
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intent)
+        when (requestCode) {
+            PICK_CONTACT_REQUEST ->
+                if (resultCode == RESULT_OK) {
+                    // A contact was picked. Display it to the user.
+                    startActivity(Intent(Intent.ACTION_VIEW, intent?.data))
+                    var data = intent?.data
+                    val selectedContactName = data.getStringExtra("selected_contact_name")
+                    val selectedContactPhone = data.getStringExtra("selected_contact_phone")
+                    Toast.makeText(this, "Selected Contact: $selectedContactName, Phone: $selectedContactPhone", Toast.LENGTH_LONG).show()
+                }
         }
     }
 
-    private fun navigateToLoginActivity() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun navigateToConstraintActivity() {
-        val intent = Intent(this, ConstraintActivity::class.java)
+    private fun navigateToActivity(activityClass: Class<out Activity>) {
+        val intent = Intent(this, activityClass)
         startActivity(intent)
     }
 
