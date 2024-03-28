@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.util.Log
 import android.view.KeyEvent
 import android.widget.Button
 import android.widget.Toast
@@ -16,9 +17,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import java.util.Locale
 
+
 class MainActivity : AppCompatActivity() {
     companion object {
-        internal const val PICK_CONTACT_REQUEST = 0
+        const val REQUEST_SELECT_PHONE_NUMBER = 1
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
         var button1 = findViewById<Button>(R.id.toConstraintActivity)
         button1.setOnClickListener {
-            navigateToActivity(ContactActivity::class.java)
+            navigateToActivity(ConstraintActivity::class.java)
         }
         var button2 = findViewById<Button>(R.id.toLoginActivity)
         button2.setOnClickListener {
@@ -39,36 +41,43 @@ class MainActivity : AppCompatActivity() {
         }
         var button3 = findViewById<Button>(R.id.toContactActivity)
         button3.setOnClickListener {
-            navigateToActivity(ContactActivity::class.java)
+            //navigateToActivity(ContactActivity::class.java)
+            selectContact()
         }
 
 
     }
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
-            // When the user center presses, let them pick a contact.
-            startActivityForResult(
-                Intent(Intent.ACTION_PICK, Uri.parse("content://contacts")),
-                PICK_CONTACT_REQUEST
-            )
-            return true
-        }
-        return false
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
-        super.onActivityResult(requestCode, resultCode, intent)
-        when (requestCode) {
-            PICK_CONTACT_REQUEST ->
-                if (resultCode == RESULT_OK) {
-                    // A contact was picked. Display it to the user.
-                    startActivity(Intent(Intent.ACTION_VIEW, intent?.data))
-                    var data = intent?.data
-                    val selectedContactName = data.getStringExtra("selected_contact_name")
-                    val selectedContactPhone = data.getStringExtra("selected_contact_phone")
-                    Toast.makeText(this, "Selected Contact: $selectedContactName, Phone: $selectedContactPhone", Toast.LENGTH_LONG).show()
+
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_SELECT_PHONE_NUMBER && resultCode == Activity.RESULT_OK) {
+            // Get the URI and query the content provider for the phone number.
+            val contactUri: Uri? = data?.data
+            if (contactUri != null) {
+                contentResolver.query(contactUri, null, null, null, null).use { cursor ->
+                    // If the cursor returned is valid, get the phone number.
+                    if (cursor != null) {
+                        if (cursor.moveToFirst()) {
+                            val numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                            val number = numberIndex.let { cursor.getString(it) }
+                            val nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
+                            val name = nameIndex.let { cursor.getString(it) }
+                            // Do something with the phone number.
+                            Toast.makeText(this, "Selected Contact: $name, Phone: $number", Toast.LENGTH_LONG).show()
+                            cursor.close()
+                        }
+                    }
                 }
+            }
         }
+    }
+
+    private fun selectContact() {
+        val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+        startActivityForResult(intent, REQUEST_SELECT_PHONE_NUMBER) // 启动ForResult
     }
 
     private fun navigateToActivity(activityClass: Class<out Activity>) {
