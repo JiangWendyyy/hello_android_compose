@@ -56,19 +56,27 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == REQUEST_SELECT_PHONE_NUMBER && resultCode == Activity.RESULT_OK) {
             // Get the URI and query the content provider for the phone number.
             val contactUri: Uri? = data?.data
-            if (contactUri != null) {
-                contentResolver.query(contactUri, null, null, null, null).use { cursor ->
-                    // If the cursor returned is valid, get the phone number.
-                    if (cursor != null) {
-                        if (cursor.moveToFirst()) {
-                            val numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                            val number = numberIndex.let { cursor.getString(it) }
-                            val nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
-                            val name = nameIndex.let { cursor.getString(it) }
-                            // Do something with the phone number.
-                            Toast.makeText(this, "Selected Contact: $name, Phone: $number", Toast.LENGTH_LONG).show()
-                            cursor.close()
-                        }
+            contactUri?.let {
+                val projection: Array<String> =
+                    arrayOf(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+                val cursor = contentResolver.query(contactUri, projection, null, null, null)
+                // If the cursor returned is valid, get the phone number.
+                if (cursor != null) {
+                    if (cursor.moveToFirst()) {
+                        val nameIndex =
+                            cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
+                        val name = nameIndex.let { cursor.getString(it) }
+/*                        val numberIndex =
+                            cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                        val number = numberIndex.let { cursor.getString(it) }*/
+                        // Do something with the phone number.
+                        Toast.makeText(
+                            this,
+                            "Selected Contact: $name, ", +
+        //                            "Phone: $number",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        cursor.close()
                     }
                 }
             }
