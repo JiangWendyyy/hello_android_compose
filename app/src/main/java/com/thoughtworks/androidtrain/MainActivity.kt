@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity() {
             //navigateToActivity(ContactActivity::class.java)
             selectContact()
         }
+        var button4 = findViewById<Button>(R.id.toLanguageSectionActivity)
+        button4.setOnClickListener {
+            navigateToActivity(LanguageSelectionActivity::class.java)
+        }
 
 
     }
