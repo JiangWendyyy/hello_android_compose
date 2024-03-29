@@ -2,20 +2,17 @@ package com.thoughtworks.androidtrain
 
 import android.app.Activity
 import android.content.Intent
-import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.util.Log
-import android.view.KeyEvent
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -57,25 +54,51 @@ class MainActivity : AppCompatActivity() {
             // Get the URI and query the content provider for the phone number.
             val contactUri: Uri? = data?.data
             contactUri?.let {
-                val projection: Array<String> =
-                    arrayOf(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-                val cursor = contentResolver.query(contactUri, projection, null, null, null)
+                val cursor = contentResolver.query(contactUri, null, null, null, null)
                 // If the cursor returned is valid, get the phone number.
                 if (cursor != null) {
                     if (cursor.moveToFirst()) {
-                        val nameIndex =
+                        val columnIndex =
+                            cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)
+                        val hasPhoneNumber = Integer.parseInt(columnIndex.let { cursor.getString(it) })
+                        if(hasPhoneNumber >0){
+                            val id = cursor.getColumnIndex(ContactsContract.Contacts._ID)
+                            val ID = id.let { cursor.getString(it) }
+                            Log.d("ID", "ID:$ID ")
+                            var phoneCursor = contentResolver.query(
+                                Phone.CONTENT_URI,
+                                null,
+                                Phone.CONTACT_ID + "=" + ID,
+                                null,
+                                null
+                            )
+
+                            phoneCursor?.use {
+                                while (phoneCursor.moveToNext()) {
+                                    var phoneIndex =
+                                        phoneCursor.getColumnIndex(Phone.NUMBER)
+                                    var phone = phoneIndex.let { phoneCursor.getString(it) }
+                                    Toast.makeText(
+                                        this,
+                                        "Selected Contact: $phone, ",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }
+                            }
+
+                        }
+/*                        val nameIndex =
                             cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
                         val name = nameIndex.let { cursor.getString(it) }
-/*                        val numberIndex =
-                            cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                        val number = numberIndex.let { cursor.getString(it) }*/
+                        var phoneIndex =
+                            cursor.getColumnIndex(Phone.NUMBER)
+                        var phone = phoneIndex.let { cursor.getString(it) }
                         // Do something with the phone number.
                         Toast.makeText(
                             this,
-                            "Selected Contact: $name, ", +
-        //                            "Phone: $number",
+                            "Selected Contact: $name, ",
                             Toast.LENGTH_LONG
-                        ).show()
+                        ).show()*/
                         cursor.close()
                     }
                 }
