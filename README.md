@@ -1,1 +1,1 @@
-我没有做成功。。不知道为什么main Activity里的第60行的contentResolver.query(contactUri, null, null, null, null)方法一直在返回null，我不知道怎么解决这个问题。。
+hello 乐飞，我把之前那个contact的作业改好啦，然后周五的作业里面，作业1和2都是正常的，但是作业3在最后加上“到底了”button这里好像搞不成功，每次我滑到底的时候就会出错，然后卡退。。没想明白，周一QA问一下～
