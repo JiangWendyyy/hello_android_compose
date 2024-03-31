@@ -67,6 +67,7 @@
                     android:backgroundTint="@color/gray"
                     android:text="@string/button4" />
                 <Button
+                    android:id="@+id/toTweetsActivity"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/main_activity_button_height"
                     android:layout_marginTop="@dimen/main_activity_button_marginTop"

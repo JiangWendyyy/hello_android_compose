@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         button4.setOnClickListener {
             navigateToActivity(LanguageSelectionActivity::class.java)
         }
+        var button5 = findViewById<Button>(R.id.toTweetsActivity)
+        button5.setOnClickListener {
+            navigateToActivity(TweetsActivity::class.java)
+        }
 
 
     }
