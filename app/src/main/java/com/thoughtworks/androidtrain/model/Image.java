@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.data.model;
+package com.thoughtworks.androidtrain.model;
 
 
 public class Image {
