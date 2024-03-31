@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.annotation.IdRes
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 
 class MyFragment : Fragment() {
@@ -14,32 +17,34 @@ class MyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.language_selection_layout, container, false)
-
+        val androidTextView = view?.findViewById<TextView>(R.id.android_text)
+        val javaTextView = view?.findViewById<TextView>(R.id.java_text)
+        androidTextView?.isVisible = false
+        javaTextView?.isVisible = false
         view.findViewById<Button>(R.id.Android).setOnClickListener {
-            // 显示 "Android" 文本在右上方
-
+            // 显示 "Android" 文本
+            showText(R.id.Android)
         }
-
-        view.findViewById<Button>(R.id.buttonJava).setOnClickListener {
-            // 显示 "Java" 文本在右下方
-            showText("Java", it, R.id.buttonJava)
+        view.findViewById<Button>(R.id.Java).setOnClickListener {
+            // 显示 "Android" 文本
+            showText(R.id.Java)
         }
 
         return view
     }
 
-    private fun showText(text: String, button: View, @IdRes buttonId: Int) {
-        val textView = view?.findViewById<TextView>(R.id.textView)
-        textView?.text = text
-        textView?.visibility = View.VISIBLE
-
-        // 根据点击的按钮，设置文本的位置
+    private fun showText(@IdRes buttonId: Int) {
+        val androidTextView = view?.findViewById<TextView>(R.id.android_text)
+        val javaTextView = view?.findViewById<TextView>(R.id.java_text)
+        // 根据点击的按钮，设置文本
         when (buttonId) {
-            R.id.buttonAndroid -> {
-                textView?.layout_gravity = Gravity.END or Gravity.TOP
+            R.id.Android -> {
+                androidTextView?.isVisible = true
+                javaTextView?.isVisible = false
             }
-            R.id.buttonJava -> {
-                textView?.layout_gravity = Gravity.END or Gravity.BOTTOM
+            R.id.Java -> {
+                javaTextView?.isVisible = true
+                androidTextView?.isVisible = false
             }
         }
     }
