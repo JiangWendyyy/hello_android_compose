@@ -19,11 +19,11 @@ class ConstraintActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        var button1 = findViewById<Button>(R.id.button1)
+        val button1 = findViewById<Button>(R.id.button1)
         button1.setOnClickListener{
             changeColor(button1)
         }
-        var button2 = findViewById<Button>(R.id.button2)
+        val button2 = findViewById<Button>(R.id.button2)
         button2.setOnClickListener{
             changeColor(button2)
         }
