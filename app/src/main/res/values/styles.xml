@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--<style name="RedButton" parent="Widget.AppCompat.Button">
+    <item name="android:background">#FF0000</item>
+</style>-->
+
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:background">@color/white</item>
+    </style>
+</resources>
