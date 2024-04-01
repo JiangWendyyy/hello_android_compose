@@ -15,6 +15,9 @@
         android:theme="@style/Theme.EmptyViewsApplication"
         tools:targetApi="31">
         <activity
+            android:name=".ThreadActivity"
+            android:exported="false" />
+        <activity
             android:name=".TweetsActivity"
             android:exported="false" />
         <activity

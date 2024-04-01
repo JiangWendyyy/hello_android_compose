@@ -76,6 +76,7 @@
                     android:backgroundTint="@color/gray"
                     android:text="@string/button5" />
                 <Button
+                    android:id="@+id/toThreadActivity"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginTop="16dp"
