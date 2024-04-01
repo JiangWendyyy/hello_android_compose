@@ -4,8 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.thoughtworks.androidtrain.model.Tweet
 
 class TweetAdapter (private val tweets: List<Tweet>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -13,6 +16,7 @@ class TweetAdapter (private val tweets: List<Tweet>) : RecyclerView.Adapter<Recy
     class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nickTextView: TextView = itemView.findViewById(R.id.nick)
         val contentTextView: TextView = itemView.findViewById(R.id.content)
+        val avatarImageView: ImageView = itemView.findViewById(R.id.image)
     }
 
     class FooterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,6 +42,11 @@ class TweetAdapter (private val tweets: List<Tweet>) : RecyclerView.Adapter<Recy
             val tweet = tweets[position]
             holder.nickTextView.text = tweet.sender.nick
             holder.contentTextView.text = tweet.content
+            holder.avatarImageView.load(tweet.sender.avatar) {
+                crossfade(true)
+                placeholder(R.drawable.avatar)
+                transformations(CircleCropTransformation())
+            }
         } else if (holder is FooterViewHolder && position == tweets.size) {
             // 显示底部按钮
             holder.buttonReachedEnd.visibility = View.VISIBLE
