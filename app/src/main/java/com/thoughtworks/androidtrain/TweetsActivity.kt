@@ -1,7 +1,6 @@
 package com.thoughtworks.androidtrain
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,9 +9,10 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.thoughtworks.androidtrain.model.Tweet
 
-class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
+class TweetsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.tweets_layout)
 
         val tweetList = deserializeFromJson<List<Tweet>>(JsonConstants.feedList)
         val filteredTweets =
@@ -27,9 +27,9 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val footerViewHolder = recyclerView.findViewHolderForAdapterPosition(filteredTweets.size) as? TweetAdapter.FooterViewHolder
-                val isLastItemVisible = layoutManager.findLastVisibleItemPosition() >= filteredTweets.size
+                val isLastItemVisible = layoutManager.findLastVisibleItemPosition() == filteredTweets.size - 1
                 val isAtBottom = dy > 0 && isLastItemVisible
+                val footerViewHolder = recyclerView.findViewHolderForAdapterPosition(filteredTweets.size) as? TweetAdapter.FooterViewHolder
                 if (isAtBottom && footerViewHolder != null) {
                     footerViewHolder.buttonReachedEnd.visibility = View.VISIBLE
                 } else {

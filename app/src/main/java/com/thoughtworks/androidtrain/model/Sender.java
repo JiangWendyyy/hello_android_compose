@@ -2,25 +2,25 @@ package com.thoughtworks.androidtrain.model;
 
 
 public class Sender {
-    private String username;
+    private String userName;
     private String nick;
     private String avatar;
 
     public Sender() {
     }
 
-    public Sender(String username, String nick, String avatar) {
-        this.username = username;
+    public Sender(String userName, String nick, String avatar) {
+        this.userName = userName;
         this.nick = nick;
         this.avatar = avatar;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public Sender setUsername(String username) {
-        this.username = username;
+    public Sender setUserName(String userName) {
+        this.userName = userName;
         return this;
     }
 
