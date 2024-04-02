@@ -32,6 +32,14 @@ class TweetAdapter (private val tweets: List<Tweet>) : RecyclerView.Adapter<Recy
         private const val TYPE_FOOTER = 1
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return if(position<tweets.size){
+            TYPE_COMMENT
+        }else{
+            TYPE_FOOTER
+        }
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CommentViewHolder) {
             // 绑定评论数据
