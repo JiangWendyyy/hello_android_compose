@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.thoughtworks.androidtrain.model.Tweet
-import kotlin.math.log
 
 class TweetAdapter (private val tweets: List<Tweet>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
