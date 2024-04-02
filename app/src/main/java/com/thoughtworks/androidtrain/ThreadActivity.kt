@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class ThreadActivity : AppCompatActivity() {
 
-    private lateinit var button: Button
+    private val button by lazy { findViewById<Button>(R.id.thread) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,8 +20,6 @@ class ThreadActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        button = findViewById<Button>(R.id.thread)
         button.setOnClickListener{
             button.isEnabled = false
             CounterAsyncTask().execute()
