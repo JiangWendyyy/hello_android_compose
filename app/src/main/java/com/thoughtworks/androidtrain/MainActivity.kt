@@ -54,6 +54,10 @@ class MainActivity : AppCompatActivity() {
         button6.setOnClickListener {
             navigateToActivity(ThreadActivity::class.java)
         }
+        val button7 = findViewById<Button>(R.id.toSharedPreferenceActivity)
+        button7.setOnClickListener {
+            navigateToActivity(SharedPreferenceActivity::class.java)
+        }
 
 
     }
