@@ -1,5 +1,6 @@
 package com.thoughtworks.androidtrain
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -8,12 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.thoughtworks.androidtrain.model.Tweet
+import java.io.BufferedReader
+import java.io.InputStream
+import java.io.InputStreamReader
 
 class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val tweetList = deserializeFromJson<List<Tweet>>(JsonConstants.feedList)
+        val tweetList: List<Tweet> = convertJsonToList(R.raw.tweets)
         val filteredTweets =
             tweetList.filter { it.unknownError == null && it.error == null && it.sender != null }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
@@ -38,13 +41,11 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         })
     }
 
-
-
-    // 使用 Gson 解析 JSON 字符串并创建 Comment 列表
-
-    // 反序列化 JSON 字符串为对象
-    private inline fun <reified T> deserializeFromJson(json: String): T {
+    private fun convertJsonToList(resourceId: Int): List<Tweet> {
+        val jsonRaw = resources.openRawResource(resourceId)
         val gson = Gson()
-        return gson.fromJson(json, object : TypeToken<T>() {}.type)
+        val typeToken = object : TypeToken<List<Tweet>>() {}.type
+        return gson.fromJson(jsonRaw.reader().readText(), typeToken)
     }
+
 }
