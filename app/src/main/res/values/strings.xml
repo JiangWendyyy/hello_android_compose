@@ -30,9 +30,9 @@ as few implementation dependencies as possible.</string>
     <string name="bottom" translatable="false">到底了</string>
     <string name="please_click_me" translatable="false">please click me</string>
     <string name="remind_message" translatable="false">提示信息：\n点击“知道了”不再提示。</string>
-    <string name="know">知道了</string>
-    <string name="welcome_back">欢迎您回来</string>
-    <string name="datastore">DataStore</string>
+    <string name="know" translatable="false">知道了</string>
+    <string name="welcome_back" translatable="false">欢迎您回来</string>
+    <string name="datastore" translatable="false">DataStore</string>
 
 
 </resources>
