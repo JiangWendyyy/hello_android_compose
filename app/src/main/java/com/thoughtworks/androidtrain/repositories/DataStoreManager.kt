@@ -12,17 +12,25 @@ import java.io.IOException
 
 private val Context.dataStore by preferencesDataStore("hintData")
 private const val DATA_KEY = "hint"
+private const val TWEET_KEY = "tweet"
 class DataStoreManager( context: Context) {
 
     private val dataStore = context.dataStore
 
     companion object {
         val hintKey = booleanPreferencesKey(DATA_KEY)
+        val tweetKey = booleanPreferencesKey(TWEET_KEY)
     }
 
     suspend fun setIsHintShown(isHintShown: Boolean) {
         dataStore.edit {
                 preferences -> preferences[hintKey] = isHintShown
+        }
+    }
+
+    suspend fun setIsTweetInit(isTweetInit: Boolean) {
+        dataStore.edit {
+                preferences -> preferences[tweetKey] = isTweetInit
         }
     }
 
@@ -33,6 +41,15 @@ class DataStoreManager( context: Context) {
                 else { throw exception }
             }
             .map { preferences -> preferences[hintKey] ?: false }
+    }
+
+    fun getIsTweetInit() : Flow<Boolean> {
+        return dataStore.data
+            .catch { exception ->
+                if (exception is IOException) { emit(emptyPreferences()) }
+                else { throw exception }
+            }
+            .map { preferences -> preferences[tweetKey] ?: false }
     }
 
 }

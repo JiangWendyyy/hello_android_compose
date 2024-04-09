@@ -10,9 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.thoughtworks.androidtrain.model.Tweet
+import com.thoughtworks.androidtrain.entity.Tweet
 
-class TweetAdapter (private val tweets: List<Tweet>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TweetAdapter (public var tweets: List<Tweet>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nickTextView: TextView = itemView.findViewById(R.id.nick)
@@ -50,9 +50,9 @@ class TweetAdapter (private val tweets: List<Tweet>) : RecyclerView.Adapter<Recy
             // 绑定评论数据
             val tweet = tweets[position]
             Log.d("position", "CommentViewHolder position: $position: ")
-            holder.nickTextView.text = tweet.sender.nick
+            holder.nickTextView.text = tweet.sender?.nick
             holder.contentTextView.text = tweet.content
-            holder.avatarImageView.load(tweet.sender.avatar) {
+            holder.avatarImageView.load(tweet.sender?.avatar) {
                 crossfade(true)
                 placeholder(R.drawable.avatar)
                 transformations(CircleCropTransformation())

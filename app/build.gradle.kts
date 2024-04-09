@@ -1,6 +1,11 @@
+import org.jetbrains.kotlin.ir.backend.js.transformers.irToJs.defineProperty
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("androidx.room") version "2.6.1" apply false
+    id("com.google.devtools.ksp")
+    kotlin("kapt")
 }
 
 android {
@@ -50,4 +55,8 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    // To use Kotlin annotation processing tool (kapt)
+    kapt(libs.androidx.room.compiler)
 }
