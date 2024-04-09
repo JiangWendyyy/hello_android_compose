@@ -1,6 +1,5 @@
 package com.thoughtworks.androidtrain
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.thoughtworks.androidtrain.model.Tweet
-import java.io.BufferedReader
-import java.io.InputStream
-import java.io.InputStreamReader
 
 class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
     override fun onCreate(savedInstanceState: Bundle?) {
