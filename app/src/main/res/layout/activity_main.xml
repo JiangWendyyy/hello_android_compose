@@ -94,13 +94,14 @@
                     android:backgroundTint="@color/gray"
                     android:text="@string/button7" />
                 <Button
+                    android:id="@+id/toDataStoreActivity"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/main_activity_button_height"
                     android:layout_marginTop="@dimen/main_activity_button_marginTop"
                     android:layout_marginStart="@dimen/main_activity_button_marginStart"
                     android:layout_marginEnd="@dimen/main_activity_button_marginStart"
                     android:backgroundTint="@color/gray"
-                    android:text="@string/button8" />
+                    android:text="@string/datastore" />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/main_activity_button_height"

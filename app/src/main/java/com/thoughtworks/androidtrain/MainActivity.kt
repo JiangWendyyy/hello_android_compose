@@ -54,9 +54,9 @@ class MainActivity : AppCompatActivity() {
         button6.setOnClickListener {
             navigateToActivity(ThreadActivity::class.java)
         }
-        val button7 = findViewById<Button>(R.id.toSharedPreferenceActivity)
-        button7.setOnClickListener {
-            navigateToActivity(SharedPreferenceActivity::class.java)
+        val button8 = findViewById<Button>(R.id.toDataStoreActivity)
+        button8.setOnClickListener {
+            navigateToActivity(DataStoreActivity::class.java)
         }
 
 

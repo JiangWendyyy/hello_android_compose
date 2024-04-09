@@ -1,28 +1,41 @@
 [versions]
 agp = "8.3.1"
 coil = "2.2.2"
+datastorePreferences = "1.0.0"
 gson = "2.10.1"
+hiltAndroid = "2.38.1"
+hiltAndroidCompiler = "1.0.0"
+hiltAndroidCompilerVersion = "1.0.0."
 kotlin = "1.9.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
+kotlinxCoroutinesPlayservices = "1.5.2"
 material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
+coreKtxVersion = "1.5.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+androidx-hilt-android-compiler = { module = "androidx.hilt:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
+androidx-hilt-android-compiler-v100 = { module = "androidx.hilt:hilt-android-compiler", version.ref = "hiltAndroidCompilerVersion" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+kotlinx-coroutines-playservices = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-playservices", version.ref = "kotlinxCoroutinesPlayservices" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
