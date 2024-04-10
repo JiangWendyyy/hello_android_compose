@@ -2,7 +2,6 @@ package com.thoughtworks.androidtrain
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.thoughtworks.androidtrain.databases.ApplicationDatabase
 import com.thoughtworks.androidtrain.Entity.Tweet
-import com.thoughtworks.androidtrain.api.TweetController
-import com.thoughtworks.androidtrain.api.util.JsonUtil
+import com.thoughtworks.androidtrain.api.RetrofitBuilder.retrofit
 import com.thoughtworks.androidtrain.repositories.DataStoreManager
 import com.thoughtworks.androidtrain.repositories.TweetRepository
 import kotlinx.coroutines.launch
@@ -60,12 +58,15 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
             if (!isTweetInit) {
                 lifecycleScope.launch {
                     try {
-                        TweetController().fetchTweets().use { response ->
-                            val tweets =
-                                JsonUtil().getTweetListFromJsonStr(response.body.string())
-                            tweets.forEach(Tweet::generateAndBindId)
-                            database.tweetDao().insertAll(tweets)
-                            dataStoreManager.setIsTweetInit(true)
+                        val response = retrofit.fetchTweets()
+                        if (response.isSuccessful) {
+                            val tweets = response.body()
+                            if (tweets != null) {
+                                tweets.forEach(Tweet::generateAndBindId)
+                                tweets.filter { it.isValid() }
+                                lifecycleScope.launch { database.tweetDao().insertAll(tweets) }
+                                dataStoreManager.setIsTweetInit(true)
+                            }
                         }
                     } catch (e: Exception) {
                         Toast.makeText(
