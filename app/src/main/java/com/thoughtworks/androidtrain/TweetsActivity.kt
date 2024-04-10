@@ -3,19 +3,24 @@ package com.thoughtworks.androidtrain
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.thoughtworks.androidtrain.databases.ApplicationDatabase
 import com.thoughtworks.androidtrain.Entity.Tweet
+import com.thoughtworks.androidtrain.api.TweetController
+import com.thoughtworks.androidtrain.api.util.JsonUtil
 import com.thoughtworks.androidtrain.repositories.DataStoreManager
 import com.thoughtworks.androidtrain.repositories.TweetRepository
 import kotlinx.coroutines.launch
-private const val DATA_INPUT_KEY = "isJsonDataInserted"
+import org.json.JSONArray
+
 class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
     private val database by lazy { ApplicationDatabase(this) }
     private val tweets: List<Tweet> by lazy { convertJsonToList(R.raw.tweets) }
@@ -66,15 +71,23 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         return gson.fromJson(jsonRaw.reader().readText(), typeToken)
     }
 
+
+
     private fun initTweets(dataStoreManager:DataStoreManager) {
         dataStoreManager.getIsTweetInit().asLiveData().observe(this) {
             Log.i("dataStore", "initTweets: $it")
             Log.i("tweets", "initTweets: ${tweets.size}")
             if (!it) {
                 lifecycleScope.launch {
-                    val filterTweets = tweets.filter { tweet -> tweet .isValid() }
-                    database.tweetDao().insertAll(filterTweets)
-                    dataStoreManager.setIsTweetInit(true)
+                    try {
+                        TweetController().fetchTweets().use { response ->
+                            val tweets = convertJsonToList(JsonArray(response.body?.string()))
+                            database.tweetDao().insertAll(tweets)
+                            dataStoreManager.setIsTweetInit(true)
+                        }
+                    } catch (e: Exception) {
+                        Toast.makeText(this@TweetsActivity, e.message, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
