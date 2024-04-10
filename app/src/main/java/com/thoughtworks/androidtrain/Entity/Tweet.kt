@@ -16,7 +16,7 @@ data class Tweet(
     var comments: List<Comment>?,
     var error: String?,
     @SerializedName("unknown error") var unknownError: String?,
-    @PrimaryKey @ColumnInfo(name = "id") var id: Int = 0
+    @PrimaryKey @ColumnInfo(name = "id") var id: String = ""
 ) {
 
     override fun toString(): String {
@@ -24,4 +24,7 @@ data class Tweet(
     }
 
     fun isValid(): Boolean = error.isNullOrEmpty() && unknownError.isNullOrEmpty() && sender!=null
+    fun generateAndBindId() {
+        this.id = (sender?.nick + sender?.avatar).hashCode().toString()
+    }
 }

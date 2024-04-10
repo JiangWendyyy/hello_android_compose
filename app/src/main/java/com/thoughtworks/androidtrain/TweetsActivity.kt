@@ -10,8 +10,6 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.thoughtworks.androidtrain.databases.ApplicationDatabase
 import com.thoughtworks.androidtrain.Entity.Tweet
 import com.thoughtworks.androidtrain.api.TweetController
@@ -56,30 +54,20 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         recyclerView.adapter = adapter
     }
 
-    private fun convertJsonToList(resourceId: Int): List<Tweet> {
-        val jsonRaw = resources.openRawResource(resourceId)
-        val gson = Gson()
-        val typeToken = object : TypeToken<List<Tweet>>() {}.type
-        return gson.fromJson(jsonRaw.reader().readText(), typeToken)
-    }
-
     @SuppressLint("NotifyDataSetChanged")
     private fun initTweets(dataStoreManager: DataStoreManager) {
         dataStoreManager.getIsTweetInit().asLiveData().observe(this) { isTweetInit ->
             if (!isTweetInit) {
                 lifecycleScope.launch {
-                    Log.i("isTweetInit", "initTweets: ${isTweetInit} ")
                     try {
                         TweetController().fetchTweets().use { response ->
-                            Log.i("response", "initTweets: ${response} ")
                             val tweets =
-                                JsonUtil().getTweetListFromJsonStr(response.body!!.string())
-                            Log.i("tweets", "initTweets: ${tweets.size} ")
+                                JsonUtil().getTweetListFromJsonStr(response.body.string())
+                            tweets.forEach(Tweet::generateAndBindId)
                             database.tweetDao().insertAll(tweets)
                             dataStoreManager.setIsTweetInit(true)
                         }
                     } catch (e: Exception) {
-                        Log.i("exception", "initTweets: ${e.message}")
                         Toast.makeText(
                             this@TweetsActivity,
                             "error:${e.message}",
