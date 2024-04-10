@@ -3,6 +3,7 @@ package com.thoughtworks.androidtrain.api
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
+import okhttp3.executeAsync
 import java.io.IOException
 
 class TweetController {
@@ -15,7 +16,7 @@ class TweetController {
     suspend fun fetchTweets(): Response {
         val request: Request = Request.Builder().url(url).build()
         val call = client.newCall(request)
-        return call.execute()
+        return call.executeAsync()
     }
 
 }

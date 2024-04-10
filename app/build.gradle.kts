@@ -59,5 +59,5 @@ dependencies {
     annotationProcessor(libs.androidx.room.compiler)
     // To use Kotlin annotation processing tool (kapt)
     kapt(libs.androidx.room.compiler)
-    implementation(libs.okhttp)
+    implementation(libs.okhttp.coroutines)
 }
