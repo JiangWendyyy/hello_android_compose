@@ -72,7 +72,8 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
             Log.i("tweets", "initTweets: ${tweets.size}")
             if (!it) {
                 lifecycleScope.launch {
-                    val filterTweets = tweets.filter { tweet -> tweet .isValid() }
+                    val filterTweets = tweets.filter { tweet -> tweet.isValid() }
+                    Log.i("filterTweets", "initTweets: ${filterTweets.size}")
                     database.tweetDao().insertAll(filterTweets)
                     dataStoreManager.setIsTweetInit(true)
                 }
