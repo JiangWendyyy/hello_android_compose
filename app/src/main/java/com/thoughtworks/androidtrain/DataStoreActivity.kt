@@ -1,7 +1,6 @@
 package com.thoughtworks.androidtrain
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -9,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import com.thoughtworks.androidtrain.repositories.DataStoreManager
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 class DataStoreActivity : AppCompatActivity(R.layout.shared_preference_layout_remind) {
     private lateinit var dataStoreManager: DataStoreManager
@@ -19,7 +17,6 @@ class DataStoreActivity : AppCompatActivity(R.layout.shared_preference_layout_re
         dataStoreManager = DataStoreManager(this)
         val button = findViewById<Button>(R.id.know)
         dataStoreManager.getIsHintShown().asLiveData().observe(this) {
-            Log.i("live data", "onCreate: $it")
             if (it) { updateView(button) }
         }
         button.setOnClickListener {
@@ -35,6 +32,5 @@ class DataStoreActivity : AppCompatActivity(R.layout.shared_preference_layout_re
 
     private fun updateHintShown() {
         lifecycleScope.launch { dataStoreManager.setIsHintShown(true) }
-        recreate()
     }
 }
