@@ -16,7 +16,7 @@ data class Tweet(
     var comments: List<Comment>?,
     var error: String?,
     @SerializedName("unknown error") var unknownError: String?,
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Int = 0
+    @PrimaryKey @ColumnInfo(name = "id") var id: Int = 0
 ) {
 
     override fun toString(): String {

@@ -1,5 +1,6 @@
 package com.thoughtworks.androidtrain
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,28 +16,28 @@ import com.thoughtworks.androidtrain.Entity.Tweet
 import com.thoughtworks.androidtrain.repositories.DataStoreManager
 import com.thoughtworks.androidtrain.repositories.TweetRepository
 import kotlinx.coroutines.launch
-private const val DATA_INPUT_KEY = "isJsonDataInserted"
 class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
     private val database by lazy { ApplicationDatabase(this) }
     private val tweets: List<Tweet> by lazy { convertJsonToList(R.raw.tweets) }
+    private val adapter = TweetAdapter(emptyList())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val dataStoreManager = DataStoreManager(this)
-        initTweets(dataStoreManager)
-        val filteredTweets = getTweetList()?.filter { it.isValid() }
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        initRecycleView(recyclerView, filteredTweets)
+        initRecycleView(recyclerView)
+        initTweets(dataStoreManager)
 
         // 添加滚动监听器
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                if (filteredTweets != null) {
+                val count = recyclerView.adapter?.itemCount?:0
+                if (count != 0) {
                     val footerViewHolder =
-                        recyclerView.findViewHolderForAdapterPosition(filteredTweets.size) as? TweetAdapter.FooterViewHolder
+                        recyclerView.findViewHolderForAdapterPosition(count) as? TweetAdapter.FooterViewHolder
                     val isLastItemVisible =
-                        layoutManager.findLastVisibleItemPosition() >= filteredTweets.size
+                        layoutManager.findLastVisibleItemPosition() >= count
                     val isAtBottom = dy > 0 && isLastItemVisible
                     if (isAtBottom && footerViewHolder != null) {
                         footerViewHolder.buttonReachedEnd.visibility = View.VISIBLE
@@ -48,15 +49,9 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         })
     }
 
-    private fun initRecycleView(
-        recyclerView: RecyclerView,
-        filteredTweets: List<Tweet>?
-    ) {
+    private fun initRecycleView(recyclerView: RecyclerView) {
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = filteredTweets?.let { TweetAdapter(it) } // 使用 Gson 解析的评论数据
-        if (filteredTweets != null) {
-            (recyclerView.adapter as TweetAdapter).notifyItemInserted(filteredTweets.size)
-        }
+        recyclerView.adapter = adapter 
     }
 
     private fun convertJsonToList(resourceId: Int): List<Tweet> {
@@ -66,20 +61,23 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         return gson.fromJson(jsonRaw.reader().readText(), typeToken)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun initTweets(dataStoreManager:DataStoreManager) {
-        dataStoreManager.getIsTweetInit().asLiveData().observe(this) {
-            Log.i("dataStore", "initTweets: $it")
-            Log.i("tweets", "initTweets: ${tweets.size}")
-            if (!it) {
+        dataStoreManager.getIsTweetInit().asLiveData().observe(this) { isTweetInit ->
+            if (!isTweetInit) {
                 lifecycleScope.launch {
                     val filterTweets = tweets.filter { tweet -> tweet.isValid() }
                     Log.i("filterTweets", "initTweets: ${filterTweets.size}")
                     database.tweetDao().insertAll(filterTweets)
                     dataStoreManager.setIsTweetInit(true)
                 }
+            }else{
+                TweetRepository(database.tweetDao()).fetchTweets().asLiveData().observe(this) {
+                    adapter.tweets = it
+                    adapter.notifyDataSetChanged()
+                }
             }
         }
     }
-    private fun getTweetList(): List<Tweet>? = TweetRepository(database.tweetDao()).fetchTweets().asLiveData().value
 
 }
