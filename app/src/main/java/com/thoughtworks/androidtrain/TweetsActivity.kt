@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
@@ -13,12 +14,13 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.thoughtworks.androidtrain.databases.ApplicationDatabase
 import com.thoughtworks.androidtrain.Entity.Tweet
+import com.thoughtworks.androidtrain.api.TweetController
+import com.thoughtworks.androidtrain.api.util.JsonUtil
 import com.thoughtworks.androidtrain.repositories.DataStoreManager
 import com.thoughtworks.androidtrain.repositories.TweetRepository
 import kotlinx.coroutines.launch
 class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
     private val database by lazy { ApplicationDatabase(this) }
-    private val tweets: List<Tweet> by lazy { convertJsonToList(R.raw.tweets) }
     private val adapter = TweetAdapter(emptyList())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,7 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val count = recyclerView.adapter?.itemCount?:0
+                val count = recyclerView.adapter?.itemCount ?: 0
                 if (count != 0) {
                     val footerViewHolder =
                         recyclerView.findViewHolderForAdapterPosition(count) as? TweetAdapter.FooterViewHolder
@@ -51,7 +53,7 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
 
     private fun initRecycleView(recyclerView: RecyclerView) {
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter 
+        recyclerView.adapter = adapter
     }
 
     private fun convertJsonToList(resourceId: Int): List<Tweet> {
@@ -62,16 +64,30 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun initTweets(dataStoreManager:DataStoreManager) {
+    private fun initTweets(dataStoreManager: DataStoreManager) {
         dataStoreManager.getIsTweetInit().asLiveData().observe(this) { isTweetInit ->
             if (!isTweetInit) {
                 lifecycleScope.launch {
-                    val filterTweets = tweets.filter { tweet -> tweet.isValid() }
-                    Log.i("filterTweets", "initTweets: ${filterTweets.size}")
-                    database.tweetDao().insertAll(filterTweets)
-                    dataStoreManager.setIsTweetInit(true)
+                    Log.i("isTweetInit", "initTweets: ${isTweetInit} ")
+                    try {
+                        TweetController().fetchTweets().use { response ->
+                            Log.i("response", "initTweets: ${response} ")
+                            val tweets =
+                                JsonUtil().getTweetListFromJsonStr(response.body!!.string())
+                            Log.i("tweets", "initTweets: ${tweets.size} ")
+                            database.tweetDao().insertAll(tweets)
+                            dataStoreManager.setIsTweetInit(true)
+                        }
+                    } catch (e: Exception) {
+                        Log.i("exception", "initTweets: ${e.message}")
+                        Toast.makeText(
+                            this@TweetsActivity,
+                            "error:${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
-            }else{
+            } else {
                 TweetRepository(database.tweetDao()).fetchTweets().asLiveData().observe(this) {
                     adapter.tweets = it
                     adapter.notifyDataSetChanged()
@@ -79,5 +95,4 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
             }
         }
     }
-
 }
