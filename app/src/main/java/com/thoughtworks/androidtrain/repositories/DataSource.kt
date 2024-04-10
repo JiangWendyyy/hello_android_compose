@@ -1,6 +1,6 @@
 package com.thoughtworks.androidtrain.repositories
 
-import com.thoughtworks.androidtrain.entity.Tweet
+import com.thoughtworks.androidtrain.Entity.Tweet
 import kotlinx.coroutines.flow.Flow
 
 

@@ -15,7 +15,7 @@ import com.thoughtworks.androidtrain.dao.TweetDao
 import com.thoughtworks.androidtrain.entity.Comment
 import com.thoughtworks.androidtrain.entity.Image
 import com.thoughtworks.androidtrain.entity.Sender
-import com.thoughtworks.androidtrain.entity.Tweet
+import com.thoughtworks.androidtrain.Entity.Tweet
 
 private const val DB_NAME = "android_train_db"
 

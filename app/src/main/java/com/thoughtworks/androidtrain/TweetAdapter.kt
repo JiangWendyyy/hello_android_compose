@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.thoughtworks.androidtrain.entity.Tweet
+import com.thoughtworks.androidtrain.Entity.Tweet
 
 class TweetAdapter (public var tweets: List<Tweet>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

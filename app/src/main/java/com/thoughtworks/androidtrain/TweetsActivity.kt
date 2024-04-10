@@ -1,14 +1,9 @@
 package com.thoughtworks.androidtrain
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.thoughtworks.androidtrain.databases.ApplicationDatabase
-import com.thoughtworks.androidtrain.entity.Tweet
+import com.thoughtworks.androidtrain.Entity.Tweet
 import com.thoughtworks.androidtrain.repositories.DataStoreManager
 import com.thoughtworks.androidtrain.repositories.TweetRepository
 import kotlinx.coroutines.launch
