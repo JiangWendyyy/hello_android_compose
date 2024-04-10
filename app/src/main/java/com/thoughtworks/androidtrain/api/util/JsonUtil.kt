@@ -6,17 +6,15 @@ import com.thoughtworks.androidtrain.Entity.Tweet
 import org.json.JSONArray
 
 class JsonUtil{
-    companion object {
-        fun getTweetListFromJsonStr(string: String?): List<Tweet> {
-            val list = ArrayList<Tweet>()
-            val data = JSONArray(string)
-            val gson = Gson()
+    fun getTweetListFromJsonStr(string: String): ArrayList<Tweet> {
 
-            val type = object : TypeToken<List<Tweet>> {}.type
-
-            val tweets: List<Tweet> = gson.fromJson(data, type)
-            return list
-
+        val list = ArrayList<Tweet>()
+        val data = JSONArray(string)
+        val gson = Gson()
+        for (i in 0..<data.length()) {
+            val tweetModel: Tweet = gson.fromJson(data.optJSONObject(i).toString(), Tweet::class.java)
+            list.add(tweetModel)
         }
+        return list
     }
 }
