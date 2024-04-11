@@ -16,25 +16,25 @@
         android:theme="@style/Theme.EmptyViewsApplication"
         tools:targetApi="31">
         <activity
-            android:name=".DataStoreActivity"
+            android:name=".view.DataStoreActivity"
             android:exported="false" />
         <activity
-            android:name=".ThreadActivity"
+            android:name=".view.ThreadActivity"
             android:exported="false" />
         <activity
-            android:name=".TweetsActivity"
+            android:name=".view.TweetsActivity"
             android:exported="false" />
         <activity
-            android:name=".LanguageSelectionActivity"
+            android:name=".view.LanguageSelectionActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".view.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ConstraintActivity"
+            android:name=".view.ConstraintActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
