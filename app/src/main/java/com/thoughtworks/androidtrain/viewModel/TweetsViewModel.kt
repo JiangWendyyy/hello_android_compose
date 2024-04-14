@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.thoughtworks.androidtrain.data.ApplicationDatabase
 import com.thoughtworks.androidtrain.model.entity.Tweet
 import com.thoughtworks.androidtrain.data.repositories.TweetRepository
 import kotlinx.coroutines.flow.first

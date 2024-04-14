@@ -3,8 +3,6 @@ package com.thoughtworks.androidtrain.viewModel
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.asLiveData
-import com.thoughtworks.androidtrain.dao.TweetDao
 import com.thoughtworks.androidtrain.data.ApplicationDatabase
 import com.thoughtworks.androidtrain.data.repositories.TweetRepository
 import com.thoughtworks.androidtrain.entity.Image
@@ -12,12 +10,9 @@ import com.thoughtworks.androidtrain.entity.Sender
 import com.thoughtworks.androidtrain.model.entity.Tweet
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import net.bytebuddy.utility.RandomString
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
