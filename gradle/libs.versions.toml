@@ -1,5 +1,6 @@
 [versions]
 okhttpCoroutines = "5.0.0-alpha.12"
+espressoCore = "3.5.1"
 lifecycleViewmodelKtx = "2.7.0"
 agp = "8.3.1"
 coil = "2.2.2"
@@ -11,7 +12,6 @@ kotlin = "1.9.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
-espressoCore = "3.5.1"
 appcompat = "1.6.1"
 material = "1.10.0"
 activity = "1.8.0"
@@ -21,7 +21,9 @@ retrofit = "2.9.0"
 roomRuntime = "2.6.1"
 mockitoCore = "5.10.0"
 
+
 [libraries]
+androidx-espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espressoCore" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test",version.ref = "kotlinxCoroutines"}
