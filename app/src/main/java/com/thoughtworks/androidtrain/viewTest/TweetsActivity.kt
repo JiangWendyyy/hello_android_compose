@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.view
+package com.thoughtworks.androidtrain.viewTest
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

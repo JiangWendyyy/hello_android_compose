@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.view.fragments
+package com.thoughtworks.androidtrain.viewTest.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

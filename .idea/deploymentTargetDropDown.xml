@@ -2,10 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="TweetsActivity">
+      <entry key="LoginActivityTest">
         <State />
       </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="click_checkbox_as_checked_correctly()">
+        <State />
+      </entry>
+      <entry key="should_jump_to_login_page()">
+        <State />
+      </entry>
+      <entry key="should_jump_to_login_page_and_click_checkbox_as_checked_correctly()">
         <State />
       </entry>
     </value>
