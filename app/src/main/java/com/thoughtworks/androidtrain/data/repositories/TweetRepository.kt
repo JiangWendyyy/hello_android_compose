@@ -1,5 +1,6 @@
 package com.thoughtworks.androidtrain.data.repositories
 
+import androidx.lifecycle.LiveData
 import com.thoughtworks.androidtrain.dao.TweetDao
 import com.thoughtworks.androidtrain.api.TweetApi
 import com.thoughtworks.androidtrain.model.entity.Tweet

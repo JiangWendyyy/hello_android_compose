@@ -11,10 +11,7 @@ import com.thoughtworks.androidtrain.data.repositories.TweetRepository
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class TweetViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val tweetRepository: TweetRepository by lazy {
-        TweetRepository(ApplicationDatabase(application).tweetDao()) }
+class TweetViewModel(application: Application, private val tweetRepository: TweetRepository) : AndroidViewModel(application) {
 
     private val _tweets : MutableLiveData<List<Tweet>> = MutableLiveData<List<Tweet>>()
 

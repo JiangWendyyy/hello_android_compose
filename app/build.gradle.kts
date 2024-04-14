@@ -62,4 +62,10 @@ dependencies {
     implementation(libs.okhttp.coroutines)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    testImplementation(libs.junit)
+    testImplementation (libs.mockito.core)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }
