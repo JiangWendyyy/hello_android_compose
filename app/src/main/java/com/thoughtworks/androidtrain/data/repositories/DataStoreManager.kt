@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.model.repositories
+package com.thoughtworks.androidtrain.data.repositories
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey

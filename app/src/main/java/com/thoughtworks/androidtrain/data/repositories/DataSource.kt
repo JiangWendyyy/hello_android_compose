@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.model.repositories
+package com.thoughtworks.androidtrain.data.repositories
 
 import com.thoughtworks.androidtrain.model.entity.Tweet
 import kotlinx.coroutines.flow.Flow

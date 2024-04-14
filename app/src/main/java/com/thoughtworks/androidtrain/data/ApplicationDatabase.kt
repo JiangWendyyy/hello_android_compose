@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.model.databases
+package com.thoughtworks.androidtrain.data
 
 import android.content.Context
 import androidx.room.Database

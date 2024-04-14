@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import com.thoughtworks.androidtrain.R
-import com.thoughtworks.androidtrain.model.repositories.DataStoreManager
+import com.thoughtworks.androidtrain.data.repositories.DataStoreManager
 import kotlinx.coroutines.launch
 class DataStoreActivity : AppCompatActivity(R.layout.shared_preference_layout_remind) {
     private lateinit var dataStoreManager: DataStoreManager

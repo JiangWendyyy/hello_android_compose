@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.model.api.util
+package com.thoughtworks.androidtrain.util
 
 import com.google.gson.Gson
 import com.thoughtworks.androidtrain.model.entity.Tweet

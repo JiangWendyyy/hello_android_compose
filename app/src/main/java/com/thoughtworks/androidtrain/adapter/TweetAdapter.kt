@@ -1,5 +1,6 @@
 package com.thoughtworks.androidtrain.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,7 @@ import coil.transform.CircleCropTransformation
 import com.thoughtworks.androidtrain.R
 import com.thoughtworks.androidtrain.model.entity.Tweet
 
-class TweetAdapter (public var tweets: List<Tweet>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TweetAdapter (private var tweets: List<Tweet>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nickTextView: TextView = itemView.findViewById(R.id.nick)
@@ -68,5 +69,10 @@ class TweetAdapter (public var tweets: List<Tweet>) : RecyclerView.Adapter<Recyc
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newItems: List<Tweet>) {
+        tweets = newItems
+        notifyDataSetChanged()
+    }
     override fun getItemCount() = tweets.size+1
 }
