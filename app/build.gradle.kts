@@ -62,8 +62,8 @@ dependencies {
     androidTestImplementation(composeBom)
 
     implementation(libs.android.material)
-    //implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.ui)
+    implementation(libs.coil.compose)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.ui.tooling.preview)
     debugImplementation(libs.androidx.ui.tooling)
@@ -94,4 +94,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.espresso.intents)
+
 }
