@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.viewTest
+package com.thoughtworks.androidtrain.view
 
 import android.os.Bundle
 import android.widget.Button
@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.thoughtworks.androidtrain.R
-import com.thoughtworks.androidtrain.viewTest.fragments.MyFragment
+import com.thoughtworks.androidtrain.view.fragments.MyFragment
 
 class LanguageSelectionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

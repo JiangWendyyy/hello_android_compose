@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.viewTest
+package com.thoughtworks.androidtrain.view
 
 import android.content.res.ColorStateList
 import android.os.Bundle

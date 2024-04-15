@@ -12,8 +12,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.thoughtworks.androidtrain.viewTest.LoginActivity
-import com.thoughtworks.androidtrain.viewTest.MainActivity
+import com.thoughtworks.androidtrain.view.LoginActivity
+import com.thoughtworks.androidtrain.view.MainActivity
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
