@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
         val button5 = findViewById<Button>(R.id.toTweetsActivity)
         button5.setOnClickListener {
-            navigateToActivity(TweetsActivity::class.java)
+            navigateToActivity(TweetsComposeActivity::class.java)
         }
         val button6 = findViewById<Button>(R.id.toThreadActivity)
         button6.setOnClickListener {
