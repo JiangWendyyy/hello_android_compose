@@ -1,38 +1,9 @@
 <resources>
-    <string name="app_name">My first Application</string>
-    <string name="button3">pick_contact</string>
+    <string name="app_name">Discover</string>
+    <string name="Chat">Chats</string>
     <string name="button2">login</string>
     <string name="button1">constraint_layout</string>
     <string name="button4">fragment</string>
-    <string name="button5">RecyclerView</string>
-    <string name="button6">thread</string>
-    <string name="button7">SharedPreference</string>
-    <string name="button8">Button8</string>
-    <string name="button9">Button9</string>
-    <string name="button10">Button10</string>
-    <string name="title">Android practice</string>
-    <string name="hello">Hello!</string>
-    <string name="Signup">Signup</string>
-    <string name="login">login</string>
-    <string name="remember_me">Remember me</string>
-    <string name="forgot_password">Forgot password?</string>
-    <string name="or_connect_with">or connect with</string>
-    <string name="sign_up_with_e_mail">Sign up with E-mail</string>
-    <string name="password">Password</string>
-    <string name="username">Username</string>
-    <string name="android" translatable="false">Android</string>
-    <string name="java" translatable="false">Java</string>
-    <string name="android_text" translatable="false">Android is a mobile operating system based on a modified version of the Linux kernel and other
-open source software, designed primarily for touchscreen mobile devices such as smartphones
-and tablets.</string>
-    <string name="java_text" translatable="false">Java is a High Level, class-based, object-oriented programming language that is designed to have
-as few implementation dependencies as possible.</string>
-    <string name="bottom" translatable="false">到底了</string>
-    <string name="please_click_me" translatable="false">please click me</string>
-    <string name="remind_message" translatable="false">提示信息：\n点击“知道了”不再提示。</string>
-    <string name="know" translatable="false">知道了</string>
-    <string name="welcome_back" translatable="false">欢迎您回来</string>
-    <string name="datastore" translatable="false">DataStore</string>
 
 
 </resources>
