@@ -27,10 +27,13 @@ uiTooling = "1.6.5"
 materialVersion = "1.6.5"
 foundationAndroid = "1.6.5"
 kotlinGradlePlugin = "1.9.23"
+material3Android = "1.2.1"
+navigationRuntimeKtx = "2.7.7"
 
 [libraries]
 androidx-espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espressoCore" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+androidx-compose-foundation = { module = "androidx.compose.foundation:foundation-layout-android", version.ref = "foundationAndroid" }
 androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "uiToolingPreview" }
 androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "uiTooling" }
@@ -60,6 +63,8 @@ core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxV
 okhttp-coroutines = { group = "com.squareup.okhttp3", name = "okhttp-coroutines", version.ref = "okhttpCoroutines" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 androidx-foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroid" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
+androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
