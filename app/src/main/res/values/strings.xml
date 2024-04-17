@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Discover</string>
-    <string name="Chat">Chats</string>
-    <string name="button2">login</string>
-    <string name="button1">constraint_layout</string>
-    <string name="button4">fragment</string>
+    <string name="app_name">Android Assignment</string>
+    <string name="tab_chat">Chats</string>
+    <string name="tab_contacts">Contacts</string>
+    <string name="tab_discover">Discover</string>
+    <string name="tab_me">Me</string>
 
 
 </resources>
