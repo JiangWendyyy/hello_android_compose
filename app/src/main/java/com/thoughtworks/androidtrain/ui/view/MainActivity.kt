@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.view
+package com.thoughtworks.androidtrain.ui.view
 
 import MyScreen
 import android.os.Bundle

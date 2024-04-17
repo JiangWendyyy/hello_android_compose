@@ -1,8 +1,8 @@
 package com.thoughtworks.androidtrain.data.repositories
 
 import com.thoughtworks.androidtrain.dao.TweetDao
-import com.thoughtworks.androidtrain.api.TweetApi
-import com.thoughtworks.androidtrain.model.entity.Tweet
+import com.thoughtworks.androidtrain.data.api.TweetApi
+import com.thoughtworks.androidtrain.data.model.entity.Tweet
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

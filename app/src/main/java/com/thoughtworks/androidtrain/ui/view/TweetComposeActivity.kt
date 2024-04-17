@@ -1,12 +1,12 @@
-package com.thoughtworks.androidtrain.view
+package com.thoughtworks.androidtrain.ui.view
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import com.thoughtworks.androidtrain.data.ApplicationDatabase
 import com.thoughtworks.androidtrain.data.repositories.TweetRepository
-import com.thoughtworks.androidtrain.view.composes.LoadTweets
-import com.thoughtworks.androidtrain.viewModel.TweetViewModel
+import com.thoughtworks.androidtrain.ui.view.composes.LoadTweets
+import com.thoughtworks.androidtrain.ui.viewModel.TweetViewModel
 
 class TweetsComposeActivity : AppCompatActivity() {
 

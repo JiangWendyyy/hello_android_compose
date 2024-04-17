@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.thoughtworks.androidtrain.model.converter.CommentConverter
-import com.thoughtworks.androidtrain.model.converter.ImageConverter
-import com.thoughtworks.androidtrain.model.converter.SenderConverter
+import com.thoughtworks.androidtrain.data.model.converter.CommentConverter
+import com.thoughtworks.androidtrain.data.model.converter.ImageConverter
+import com.thoughtworks.androidtrain.data.model.converter.SenderConverter
 import com.thoughtworks.androidtrain.dao.CommentDao
 import com.thoughtworks.androidtrain.dao.ImageDao
 import com.thoughtworks.androidtrain.dao.SenderDao
@@ -15,7 +15,7 @@ import com.thoughtworks.androidtrain.dao.TweetDao
 import com.thoughtworks.androidtrain.entity.Comment
 import com.thoughtworks.androidtrain.entity.Image
 import com.thoughtworks.androidtrain.entity.Sender
-import com.thoughtworks.androidtrain.model.entity.Tweet
+import com.thoughtworks.androidtrain.data.model.entity.Tweet
 
 private const val DB_NAME = "android_train_db"
 

@@ -1,8 +1,8 @@
-package com.thoughtworks.androidtrain.api
+package com.thoughtworks.androidtrain.data.api
 
-import com.thoughtworks.androidtrain.model.entity.Tweet
+import com.thoughtworks.androidtrain.data.model.entity.Tweet
 
-import com.thoughtworks.androidtrain.api.RetrofitBuilder.retrofit
+import com.thoughtworks.androidtrain.data.api.RetrofitBuilder.retrofit
 import retrofit2.Response
 import retrofit2.http.GET
 

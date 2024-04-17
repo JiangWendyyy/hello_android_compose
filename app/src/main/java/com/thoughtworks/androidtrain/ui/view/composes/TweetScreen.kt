@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.view.composes
+package com.thoughtworks.androidtrain.ui.view.composes
 
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
@@ -26,7 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import coil.compose.AsyncImage
-import com.thoughtworks.androidtrain.model.entity.Tweet
+import com.thoughtworks.androidtrain.data.model.entity.Tweet
 
 
 @Composable

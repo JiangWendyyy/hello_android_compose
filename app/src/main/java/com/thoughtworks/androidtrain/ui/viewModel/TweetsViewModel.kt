@@ -1,11 +1,11 @@
-package com.thoughtworks.androidtrain.viewModel
+package com.thoughtworks.androidtrain.ui.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.thoughtworks.androidtrain.model.entity.Tweet
+import com.thoughtworks.androidtrain.data.model.entity.Tweet
 import com.thoughtworks.androidtrain.data.repositories.TweetRepository
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch

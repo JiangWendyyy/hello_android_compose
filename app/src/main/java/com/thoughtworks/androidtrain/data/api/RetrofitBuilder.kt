@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.api
+package com.thoughtworks.androidtrain.data.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

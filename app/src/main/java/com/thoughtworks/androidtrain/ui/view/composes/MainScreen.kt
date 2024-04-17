@@ -18,6 +18,9 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.sharp.Email
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -67,7 +70,8 @@ fun MyScreen() {
                     icon = { Icon(Icons.Default.Person, contentDescription = "Profile") },
                     label = { Text(text = "me", color = Color.White, fontSize = 16.sp) },
                     selected = false,
-                    onClick = { currentPage = "me" }
+                    onClick = { currentPage = "me"
+                    }
                 )
             }
         },

@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.model.converter
+package com.thoughtworks.androidtrain.data.model.converter
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

@@ -25,7 +25,7 @@
             android:name=".view.TweetsActivity"
             android:exported="false" />
         <activity
-            android:name=".view.TweetsComposeActivity"
+            android:name=".ui.view.TweetsComposeActivity"
             android:exported="false" />
         <activity
             android:name=".view.LanguageSelectionActivity"
@@ -37,7 +37,7 @@
             android:name=".view.ConstraintActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".ui.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
