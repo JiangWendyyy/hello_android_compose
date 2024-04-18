@@ -1,8 +1,8 @@
 package com.thoughtworks.androidtrain.data.repositories
 
-import com.thoughtworks.androidtrain.androidassignment.data.dao.User
 import com.thoughtworks.androidtrain.androidassignment.data.dao.UserDao
 import com.thoughtworks.androidtrain.data.api.Api
+import com.thoughtworks.androidtrain.data.api.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

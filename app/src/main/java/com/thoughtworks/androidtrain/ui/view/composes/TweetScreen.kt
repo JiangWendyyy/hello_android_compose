@@ -1,91 +1,254 @@
-package com.thoughtworks.androidtrain.ui.view.composes
+package com.thoughtworks.androidtrain.androidassignment.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.thoughtworks.androidtrain.R
+import com.thoughtworks.androidtrain.data.api.User
 import com.thoughtworks.androidtrain.data.model.entity.Tweet
-
+import com.thoughtworks.androidtrain.entity.Image
 
 @Composable
-fun LoadTweets(tweets: List<Tweet>) {
+fun TweetScreen(
+    tweets: List<Tweet>?,
+    user: User?,
+) {
+    if (user == null) {
+        return
+    }
     Column(
         modifier = Modifier.verticalScroll(state = ScrollState(1), enabled = true)
     ) {
-        tweets.forEach { TweetItem(tweet = it) }
-        BottomItem()
+        UserTitleItem(user)
+        TweetsItem(tweets, user)
     }
 }
 
-
 @Composable
-fun TweetItem(tweet: Tweet) {
-    val openDialog = remember { mutableStateOf(false) }
-    val openTextField = remember { mutableStateOf(false) }
-
-    DiaLogItem(openDialog, tweet)
-    Row {
+private fun UserTitleItem(user: User) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(400.dp)
+    ) {
         AsyncImage(
             modifier = Modifier
-                .padding(all = 5.dp)
-                .clickable {
-                    openDialog.value = true
-                }
-                .size(60.dp),
-            model = tweet.sender?.avatar,
-            contentDescription = null
+                .fillMaxWidth()
+                .height(370.dp),
+            contentScale = ContentScale.Crop,
+            model = user.profileImage,
+            contentDescription = user.id
         )
-        Column(modifier = Modifier.clickable {
-            openTextField.value = true
-        }) {
+        Row(modifier = Modifier.align(Alignment.BottomEnd)) {
             Text(
-                modifier = Modifier.padding(vertical = 5.dp),
-                text = tweet.sender?.nick ?: "",
-                color = Color.Black
+                modifier = Modifier.align(Alignment.CenterVertically),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                text = user.nick,
+                color = Color.White
             )
-            Text(
-                modifier = Modifier.padding(vertical = 2.dp),
-                text = tweet.content ?: "",
-                color = Color.Black
+            AsyncImage(
+                modifier = Modifier
+                    .padding(all = 5.dp)
+                    .size(100.dp),
+                model = user.avatar,
+                contentDescription = user.id
             )
-            CommentListItem(openTextField)
         }
     }
 }
 
 @Composable
+private fun TweetsItem(tweets: List<Tweet>?, user: User) {
+    if (tweets?.isEmpty() == true) {
+        return
+    }
+    tweets?.forEach { TweetItem(tweet = it, user = user) }
+    BottomItem()
+}
+
+@Composable
+fun TweetItem(tweet: Tweet, user: User) {
+
+    val likeFlag = remember { mutableStateOf(false) }
+    val addCommentFlag = remember { mutableStateOf(false) }
+
+    Row {
+        AsyncImage(
+            modifier = Modifier
+                .padding(all = 5.dp)
+                .size(60.dp),
+            model = tweet.sender?.avatar,
+            contentDescription = null
+        )
+        Column(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                modifier = Modifier.padding(vertical = 5.dp),
+                text = tweet.sender?.nick ?: "",
+                fontSize = 20.sp,
+                color = Color.Blue
+            )
+            Text(
+                modifier = Modifier.padding(vertical = 2.dp),
+                text = tweet.content ?: "",
+                fontSize = 20.sp,
+                color = Color.Black
+            )
+            ImageItem(tweet.images)
+            Row(modifier = Modifier.align(Alignment.End)) {
+                ButtonsRow(likeFlag, addCommentFlag)
+            }
+            LikeRowItem(likeFlag, user)
+            CommentListItem(addCommentFlag, user)
+        }
+    }
+}
+
+@Composable
+private fun ImageItem(images: List<Image>?) {
+    Row {
+        images?.forEach {
+            AsyncImage(
+                modifier = Modifier
+                    .padding(all = 5.dp)
+                    .height(100.dp)
+                    .width(100.dp),
+                contentScale = ContentScale.Crop,
+                model = it.url,
+                contentDescription = it.id.toString()
+            )
+        }
+    }
+}
+
+@Composable
+private fun ButtonsRow(likeFlag: MutableState<Boolean>, addCommentFlag: MutableState<Boolean>) {
+    val openFlag = remember { mutableStateOf(false) }
+    var heartRid by remember { mutableIntStateOf(R.drawable.heart) }
+
+    if (openFlag.value) {
+        Button(
+            modifier = Modifier.padding(2.dp),
+            onClick = {
+                heartRid =
+                    if (heartRid == R.drawable.heart) R.drawable.heart_fill else R.drawable.heart
+                likeFlag.value = !likeFlag.value
+            }
+        ) {
+            Image(
+                modifier = Modifier
+                    .height(20.dp)
+                    .padding(horizontal = 2.dp),
+                imageVector = ImageVector.vectorResource(heartRid),
+                contentDescription = ""
+            )
+            Text(
+                modifier = Modifier.padding(horizontal = 2.dp),
+                text = "Cancel"
+            )
+        }
+        Button(
+            modifier = Modifier.padding(2.dp),
+            onClick = {
+                openFlag.value = false
+                addCommentFlag.value = true
+            }
+        ) {
+            Image(
+                modifier = Modifier
+                    .height(20.dp)
+                    .padding(horizontal = 2.dp),
+                imageVector = ImageVector.vectorResource(R.drawable.comment),
+                contentDescription = ""
+            )
+            Text(
+                modifier = Modifier.padding(horizontal = 2.dp),
+                text = "Comment"
+            )
+        }
+    }
+
+
+    Button(
+        modifier = Modifier
+            .height(40.dp)
+            .width(70.dp)
+            .padding(5.dp),
+        onClick = { openFlag.value = !openFlag.value }
+    ) {
+        Icon(
+            imageVector = ImageVector.vectorResource(R.drawable.icon_two_point),
+            contentDescription = ""
+        )
+    }
+}
+
+@Composable
+private fun LikeRowItem(likeFlag: MutableState<Boolean>, user: User) {
+    if (!likeFlag.value) {
+        return
+    }
+    Row {
+        Image(
+            modifier = Modifier
+                .height(20.dp)
+                .padding(horizontal = 2.dp),
+            imageVector = ImageVector.vectorResource(R.drawable.heart),
+            contentDescription = ""
+        )
+        Text(
+            modifier = Modifier.align(Alignment.CenterVertically),
+            text = user.nick
+        )
+    }
+}
+
+
+@Composable
 private fun CommentListItem(
     openTextField: MutableState<Boolean>,
+    user: User
 ) {
     val commentList = remember { mutableListOf<String>() }
     commentList.forEach {
         Text(
             modifier = Modifier
                 .padding(2.dp)
-                .fillMaxWidth()
-                .background(color = Color.LightGray),
+                .fillMaxWidth(),
             text = it
         )
     }
@@ -95,47 +258,30 @@ private fun CommentListItem(
     }
 
     var text by remember { mutableStateOf(TextFieldValue("")) }
-    Row {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 5.dp)) {
         TextField(
-            modifier = Modifier.width(170.dp),
+            modifier = Modifier.fillMaxWidth(),
             value = text, onValueChange = { nextText -> text = nextText })
-        Button(
-            modifier = Modifier.padding(2.dp),
-            onClick = {
-                commentList.add(text.text)
-                openTextField.value = false
-            }) { Text(text = "save") }
-        Button(
-            modifier = Modifier.padding(2.dp),
-            onClick = { openTextField.value = false }
-        ) { Text(text = "cancel") }
+        Row(modifier = Modifier.align(Alignment.End)) {
+            Button(
+                modifier = Modifier.padding(2.dp),
+                onClick = {
+                    commentList.add(user.nick + ": " + text.text)
+                    openTextField.value = false
+                }) { Text(text = "save") }
+            Button(
+                modifier = Modifier.padding(2.dp),
+                onClick = { openTextField.value = false }
+            ) { Text(text = "cancel") }
+        }
     }
 }
 
 @Composable
-private fun DiaLogItem(
-    openDialog: MutableState<Boolean>,
-    tweet: Tweet
-) {
-    if (!openDialog.value) {
-        return
-    }
-    Dialog(onDismissRequest = { openDialog.value = false }) {
-        AsyncImage(
-            modifier = Modifier
-                .padding(all = 5.dp)
-                .clickable {
-                    openDialog.value = true
-                }
-                .size(300.dp),
-            model = tweet.sender?.avatar,
-            contentDescription = null
-        )
-    }
-}
+private fun BottomItem() {
 
-@Composable
-fun BottomItem() {
     Text(
         modifier = Modifier
             .background(Color.Gray)

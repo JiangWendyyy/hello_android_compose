@@ -1,25 +1,34 @@
-package com.thoughtworks.androidtrain.ui.viewModel
+package com.thoughtworks.androidtrain.androidassignment.ui.viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.thoughtworks.androidtrain.data.api.User
 import com.thoughtworks.androidtrain.data.model.entity.Tweet
 import com.thoughtworks.androidtrain.data.repositories.TweetRepository
-import kotlinx.coroutines.flow.first
+import com.thoughtworks.androidtrain.data.repositories.UserRepository
 import kotlinx.coroutines.launch
 
-class TweetViewModel(application: Application, private val tweetRepository: TweetRepository) : AndroidViewModel(application) {
+class TweetsViewModel(
+    application: Application,
+    private val tweetRepository: TweetRepository,
+    private val userRepository: UserRepository
+) : AndroidViewModel(application) {
 
-    private val _tweets : MutableLiveData<List<Tweet>> = MutableLiveData<List<Tweet>>()
+    var tweets = MutableLiveData<List<Tweet>>()
+    var user = MutableLiveData<User?>()
 
-    val tweets: LiveData<List<Tweet>> = _tweets
-
-    init {
+    init{
         viewModelScope.launch {
-            tweetRepository.saveFromRemote()
-            _tweets.postValue(tweetRepository.fetchTweets().first())
+            val tweetList = tweetRepository.saveFromRemote()
+            tweets.postValue(tweetList)
+            Log.d("tweets", ": $tweetList")
+            Log.d("tweets", ": ${tweets.value}")
+
+            val userInfo = userRepository.saveFromRemote()
+            user.postValue(userInfo)
         }
     }
 }

@@ -11,9 +11,10 @@ class TweetRepository(private val tweetDao: TweetDao){
         emit(tweetDao.getAll())
     }
 
-    suspend fun saveFromRemote() {
+    suspend fun saveFromRemote():List<Tweet> {
         val tweets = Api().fetchTweets().filter { it.isValid() }
         tweets.forEach(Tweet::generateAndBindId)
         tweetDao.insertAll(tweets)
+        return tweets
     }
 }

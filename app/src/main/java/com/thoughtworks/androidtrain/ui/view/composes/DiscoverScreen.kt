@@ -26,7 +26,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.thoughtworks.androidtrain.R
-import com.thoughtworks.androidtrain.ui.view.TweetsComposeActivity
+import com.thoughtworks.androidtrain.ui.view.activities.TweetsComposeActivity
 
 
 private const val MOMENTS = "Moments"

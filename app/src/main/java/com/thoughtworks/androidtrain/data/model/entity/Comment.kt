@@ -5,14 +5,13 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(foreignKeys = arrayOf(
-    ForeignKey(
-        entity = Sender::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("sender_id"))
-))
+@Entity(foreignKeys = [ForeignKey(
+    entity = Sender::class,
+    parentColumns = arrayOf("id"),
+    childColumns = arrayOf("sender_id"))]
+)
 data class Comment(
-    @ColumnInfo var content: String,
+    var content: String,
     @ColumnInfo(name = "sender_id") var senderId: Long
 ) {
     @PrimaryKey(autoGenerate = true)

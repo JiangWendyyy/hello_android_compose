@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.thoughtworks.androidtrain.androidassignment.data.dao.UserDao
 import com.thoughtworks.androidtrain.data.model.converter.CommentConverter
 import com.thoughtworks.androidtrain.data.model.converter.ImageConverter
 import com.thoughtworks.androidtrain.data.model.converter.SenderConverter
@@ -12,14 +13,15 @@ import com.thoughtworks.androidtrain.dao.CommentDao
 import com.thoughtworks.androidtrain.dao.ImageDao
 import com.thoughtworks.androidtrain.dao.SenderDao
 import com.thoughtworks.androidtrain.dao.TweetDao
+import com.thoughtworks.androidtrain.data.api.User
 import com.thoughtworks.androidtrain.entity.Comment
 import com.thoughtworks.androidtrain.entity.Image
 import com.thoughtworks.androidtrain.entity.Sender
 import com.thoughtworks.androidtrain.data.model.entity.Tweet
 
-private const val DB_NAME = "android_train_db"
+private const val DB_NAME = "android_assignment"
 
-@Database(entities = [Tweet::class, Image::class, Sender::class, Comment::class],
+@Database(entities = [Tweet::class, Image::class, Sender::class, Comment::class, User::class],
     version = 1, exportSchema = false)
 @TypeConverters(value = [ImageConverter::class, SenderConverter::class, CommentConverter::class])
 abstract class ApplicationDatabase : RoomDatabase() {
@@ -27,6 +29,8 @@ abstract class ApplicationDatabase : RoomDatabase() {
     abstract fun imageDao(): ImageDao
     abstract fun senderDao(): SenderDao
     abstract fun commentDao(): CommentDao
+
+    abstract fun userDao(): UserDao
 
     companion object {
         @Volatile
