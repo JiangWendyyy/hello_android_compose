@@ -11,10 +11,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.thoughtworks.androidtrain.androidassignment.ui.navigation.BottomNavigationBar
-import com.thoughtworks.androidtrain.androidassignment.ui.navigation.NavigationActions
-import com.thoughtworks.androidtrain.androidassignment.ui.navigation.Route
-import com.thoughtworks.androidtrain.androidassignment.ui.screens.DiscoverScreen
+import com.thoughtworks.androidtrain.ui.navigation.BottomNavigationBar
+import com.thoughtworks.androidtrain.ui.navigation.NavigationActions
+import com.thoughtworks.androidtrain.ui.navigation.Route
 
 @Composable
 fun AppContent(context: Context) {

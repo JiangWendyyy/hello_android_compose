@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.androidassignment.ui.screens
+package com.thoughtworks.androidtrain.ui.view.composes
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
@@ -36,9 +36,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.thoughtworks.androidtrain.R
-import com.thoughtworks.androidtrain.data.api.User
+import com.thoughtworks.androidtrain.data.model.entity.User
 import com.thoughtworks.androidtrain.data.model.entity.Tweet
-import com.thoughtworks.androidtrain.entity.Image
+import com.thoughtworks.androidtrain.data.model.entity.Image
 
 @Composable
 fun TweetScreen(

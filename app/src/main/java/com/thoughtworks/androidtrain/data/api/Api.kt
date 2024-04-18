@@ -3,6 +3,7 @@ package com.thoughtworks.androidtrain.data.api
 import com.thoughtworks.androidtrain.data.api.RetrofitBuilder.retrofitTweet
 import com.thoughtworks.androidtrain.data.api.RetrofitBuilder.retrofitUser
 import com.thoughtworks.androidtrain.data.model.entity.Tweet
+import com.thoughtworks.androidtrain.data.model.entity.User
 
 import retrofit2.Response
 import retrofit2.http.GET

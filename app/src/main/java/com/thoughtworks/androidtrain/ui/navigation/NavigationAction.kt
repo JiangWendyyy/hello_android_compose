@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.androidassignment.ui.navigation
+package com.thoughtworks.androidtrain.ui.navigation
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size

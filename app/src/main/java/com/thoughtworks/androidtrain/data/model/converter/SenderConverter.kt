@@ -3,7 +3,7 @@ package com.thoughtworks.androidtrain.data.model.converter
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.thoughtworks.androidtrain.entity.Sender
+import com.thoughtworks.androidtrain.data.model.entity.Sender
 
 class SenderConverter {
 

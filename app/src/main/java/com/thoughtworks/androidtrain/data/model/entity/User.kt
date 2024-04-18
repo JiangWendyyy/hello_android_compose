@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.data.api
+package com.thoughtworks.androidtrain.data.model.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -1,10 +1,10 @@
-package com.thoughtworks.androidtrain.dao
+package com.thoughtworks.androidtrain.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.thoughtworks.androidtrain.entity.Image
+import com.thoughtworks.androidtrain.data.model.entity.Image
 
 @Dao
 interface ImageDao {

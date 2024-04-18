@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.livedata.observeAsState
-import com.thoughtworks.androidtrain.androidassignment.ui.screens.TweetScreen
-import com.thoughtworks.androidtrain.androidassignment.ui.theme.AndroidAssignmentTheme
-import com.thoughtworks.androidtrain.androidassignment.ui.viewModel.TweetsViewModel
+import com.thoughtworks.androidtrain.ui.view.composes.TweetScreen
+import com.thoughtworks.androidtrain.ui.theme.AndroidAssignmentTheme
+import com.thoughtworks.androidtrain.ui.viewModel.TweetsViewModel
 import com.thoughtworks.androidtrain.data.ApplicationDatabase
 import com.thoughtworks.androidtrain.data.repositories.TweetRepository
 import com.thoughtworks.androidtrain.data.repositories.UserRepository

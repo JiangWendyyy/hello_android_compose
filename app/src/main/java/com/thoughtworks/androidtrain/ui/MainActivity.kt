@@ -1,9 +1,9 @@
-package com.thoughtworks.androidtrain.ui.view
+package com.thoughtworks.androidtrain.ui
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import com.thoughtworks.androidtrain.androidassignment.ui.theme.AndroidAssignmentTheme
+import com.thoughtworks.androidtrain.ui.theme.AndroidAssignmentTheme
 import com.thoughtworks.androidtrain.ui.view.composes.AppContent
 
 

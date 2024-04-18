@@ -1,10 +1,10 @@
-package com.thoughtworks.androidtrain.androidassignment.data.dao
+package com.thoughtworks.androidtrain.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.thoughtworks.androidtrain.data.api.User
+import com.thoughtworks.androidtrain.data.model.entity.User
 
 @Dao
 interface UserDao {

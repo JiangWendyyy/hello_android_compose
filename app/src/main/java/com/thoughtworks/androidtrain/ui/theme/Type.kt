@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.androidassignment.ui.theme
+package com.thoughtworks.androidtrain.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

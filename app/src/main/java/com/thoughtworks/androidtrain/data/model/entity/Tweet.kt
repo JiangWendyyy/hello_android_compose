@@ -4,9 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import com.thoughtworks.androidtrain.entity.Comment
-import com.thoughtworks.androidtrain.entity.Image
-import com.thoughtworks.androidtrain.entity.Sender
 
 @Entity
 data class Tweet(
