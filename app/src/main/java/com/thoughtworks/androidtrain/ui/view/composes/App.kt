@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain.ui
+package com.thoughtworks.androidtrain.ui.view.composes
 
 import android.content.Context
 import androidx.compose.foundation.layout.Column
