@@ -105,7 +105,7 @@ fun TweetItem(tweet: Tweet, user: User) {
     val likeFlag = remember { mutableStateOf(false) }
     val addCommentFlag = remember { mutableStateOf(false) }
 
-    Row {
+    Row(Modifier.padding(10.dp)) {
         AsyncImage(
             modifier = Modifier
                 .padding(all = 5.dp)
@@ -122,12 +122,14 @@ fun TweetItem(tweet: Tweet, user: User) {
                 fontSize = 20.sp,
                 color = Color.Blue
             )
-            Text(
-                modifier = Modifier.padding(vertical = 2.dp),
-                text = tweet.content ?: "",
-                fontSize = 20.sp,
-                color = Color.Black
-            )
+            if(!tweet.content.isNullOrBlank()) {
+                Text(
+                    modifier = Modifier.padding(vertical = 2.dp),
+                    text = tweet.content ?: "",
+                    fontSize = 20.sp,
+                    color = Color.Black
+                )
+            }
             ImageItem(tweet.images)
             Row(modifier = Modifier.align(Alignment.End)) {
                 ButtonsRow(likeFlag, addCommentFlag)
@@ -171,7 +173,7 @@ private fun ButtonsRow(likeFlag: MutableState<Boolean>, addCommentFlag: MutableS
         ) {
             Image(
                 modifier = Modifier
-                    .height(20.dp)
+                    .height(16.dp)
                     .padding(horizontal = 2.dp),
                 imageVector = ImageVector.vectorResource(heartRid),
                 contentDescription = ""
@@ -190,7 +192,7 @@ private fun ButtonsRow(likeFlag: MutableState<Boolean>, addCommentFlag: MutableS
         ) {
             Image(
                 modifier = Modifier
-                    .height(20.dp)
+                    .height(16.dp)
                     .padding(horizontal = 2.dp),
                 imageVector = ImageVector.vectorResource(R.drawable.comment),
                 contentDescription = ""
@@ -206,12 +208,12 @@ private fun ButtonsRow(likeFlag: MutableState<Boolean>, addCommentFlag: MutableS
     Button(
         modifier = Modifier
             .height(40.dp)
-            .width(70.dp)
-            .padding(5.dp),
+            .width(60.dp)
+            .padding(4.dp),
         onClick = { openFlag.value = !openFlag.value }
     ) {
         Icon(
-            imageVector = ImageVector.vectorResource(R.drawable.icon_two_point),
+            imageVector = ImageVector.vectorResource(R.drawable.more),
             contentDescription = ""
         )
     }
@@ -225,7 +227,7 @@ private fun LikeRowItem(likeFlag: MutableState<Boolean>, user: User) {
     Row {
         Image(
             modifier = Modifier
-                .height(20.dp)
+                .height(16.dp)
                 .padding(horizontal = 2.dp),
             imageVector = ImageVector.vectorResource(R.drawable.heart),
             contentDescription = ""
@@ -260,7 +262,7 @@ private fun CommentListItem(
     var text by remember { mutableStateOf(TextFieldValue("")) }
     Column(modifier = Modifier
         .fillMaxWidth()
-        .padding(horizontal = 5.dp)) {
+        .padding(horizontal = 4.dp)) {
         TextField(
             modifier = Modifier.fillMaxWidth(),
             value = text, onValueChange = { nextText -> text = nextText })

@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.thoughtworks.androidtrain.R
 import com.thoughtworks.androidtrain.ui.view.activities.TweetsComposeActivity
 
@@ -37,20 +40,26 @@ private const val LISTEN = "Listen"
 
 @Composable
 fun DiscoverScreen(context: Context) {
+    //TopBar("Discover")
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        Column (modifier = Modifier.padding(vertical = 2.dp)) {
+        Column(modifier = Modifier.align(Alignment.CenterHorizontally).padding(0.dp,10.dp) ){
+            Text(text = "Discover", fontSize = 22.sp,color = Color.DarkGray)
+        }
+        Column (modifier = Modifier.padding(vertical = 4.dp)) {
             BoxItem(context = context, icon = R.drawable.moments, title = MOMENTS)
         }
-        Column (modifier = Modifier.padding(vertical = 2.dp)) {
+        Column (modifier = Modifier.padding(vertical = 4.dp)) {
             BoxItem(context = context, icon = R.drawable.channels, title = CHANNELS)
             BoxItem(context = context, icon = R.drawable.live, title = LIVE)
         }
-        Column (modifier = Modifier.padding(vertical = 2.dp)) {
+        Column (modifier = Modifier.padding(vertical = 4.dp)) {
             BoxItem(context = context, icon = R.drawable.scan, title = SCAN)
             BoxItem(context = context, icon = R.drawable.listen, title = LISTEN)
         }
+
+
     }
 }
 
@@ -62,7 +71,7 @@ private fun BoxItem(
 ) {
     Box(
         modifier = Modifier
-            .background(Color.LightGray)
+            .background(Color(	230,230,230))
             .height(60.dp)
             .fillMaxWidth()
             .clickable {
@@ -75,14 +84,14 @@ private fun BoxItem(
             Image(
                 modifier = Modifier
                     .size(50.dp)
-                    .padding(horizontal = 10.dp)
+                    .padding(horizontal = 12.dp)
                     .align(Alignment.CenterVertically),
                 imageVector = ImageVector.vectorResource(icon),
                 contentDescription = ""
             )
             Text(modifier = Modifier
                 .weight(1f)
-                .align(Alignment.CenterVertically), text = title)
+                .align(Alignment.CenterVertically).padding(horizontal = 10.dp),text = title, fontSize = 20.sp, color = Color.DarkGray)
             Icon(
                 modifier = Modifier
                     .padding(horizontal = 10.dp)

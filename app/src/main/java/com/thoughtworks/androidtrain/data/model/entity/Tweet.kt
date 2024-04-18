@@ -24,7 +24,7 @@ data class Tweet(
         return "content $content \n"
     }
 
-    fun isValid(): Boolean = error.isNullOrEmpty() && unknownError.isNullOrEmpty() && sender!=null
+    fun isValid(): Boolean = error.isNullOrEmpty() && unknownError.isNullOrEmpty() && sender!=null && (content!=null || images!=null)
     fun generateAndBindId() {
         this.id = (sender?.nick + date).hashCode().toString()
     }
